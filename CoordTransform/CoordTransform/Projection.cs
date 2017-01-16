@@ -24,6 +24,7 @@ namespace CoordTransform
         {
             List<decimal> outPut = new List<decimal>();
 
+            double majom = 0;
             double x = 180 * 3600 / Math.PI;
             double c = 1.0007197049;
             double d = 19.048571778;
@@ -38,7 +39,6 @@ namespace CoordTransform
             double m = 2 * (Math.Atan(Math.Exp(k / h)) - Math.PI / 4);
 
 
-            return outPut;
         }
     }
 }
