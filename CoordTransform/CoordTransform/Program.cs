@@ -11,7 +11,7 @@ namespace CoordTransform
         static void Main(string[] args)
         {
             Projection conv = new Projection();
-            conv.eovTOwgs84(643213, 212345);
+            conv.eovTOwgs84(648951, 234344);
         }
     }
 }

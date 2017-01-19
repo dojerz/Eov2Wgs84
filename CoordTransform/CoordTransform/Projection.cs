@@ -16,15 +16,14 @@ namespace CoordTransform
 
         public void eovTOwgs84(decimal a, decimal b)
         {
-            List<decimal> hd72_a = new List<decimal>();
+            List<double> hd72_a = new List<double>();
             hd72_a = eovTOhd72(a, b);
         }
 
-        private List<decimal> eovTOhd72(decimal b, decimal a)
+        private List<double> eovTOhd72(decimal b, decimal a)
         {
-            List<decimal> outPut = new List<decimal>();
+            List<double> outPut = new List<double>();
 
-            double majom = 0;
             double x = 180 * 3600 / Math.PI;
             double c = 1.0007197049;
             double d = 19.048571778;
@@ -37,7 +36,30 @@ namespace CoordTransform
             double k = Convert.ToDouble(a - 200000);
             double l = Convert.ToDouble(b - 650000);
             double m = 2 * (Math.Atan(Math.Exp(k / h)) - Math.PI / 4);
+            double n = l / h;
+            double o = 47 + 1 / 6;
+            double p = Math.Asin(Math.Cos(g) * Math.Sin(m) + Math.Sin(g) * Math.Cos(m) * Math.Cos(n));
+            double q = Math.Asin(Math.Sin(n) * Math.Cos(m) / Math.Cos(p));
+            double r = 0.822824894115397;
+            double s = (p - j) * x;
+            double t = o * Math.PI / 180;
+            double u = 6378160;
+            double v = 6356774.516;
+            double w = (u * u - v * v) * Math.Cos(t) * Math.Cos(t) / v / v;
+            double y = Math.Pow((1 + w), 0.5);
+            double z = 1.5 * w * Math.Tan(t) / x;
+            double aa = 0.5 * w * (-1 + Math.Tan(t) * Math.Tan(t) - w + 5 * w * Math.Tan(t) * Math.Tan(t)) / y / x / x;
+            double ab = t + s * y / x - s * s * z / x + s * s * s * aa / x;
+            double ac = e + q / c;
+            double ad = ab * 180 / Math.PI;
+            double ae = ac * 180 / Math.PI;
 
+            return new List<double>() { ad, ae, 0 };
+
+        }
+
+        private void bursa_wolf()
+        {
 
         }
     }
