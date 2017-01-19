@@ -17,7 +17,7 @@ namespace CoordTransform
         public void eovTOwgs84(decimal a, decimal b)
         {
             List<double> hd72_a = new List<double>();
-            hd72_a = eovTOhd72(a, b);
+            hd72_a = eovTOhd72(a, b);s
 
             List<double> wgsCoord = bursa_wolf(hd72_a, FROMhd72TOwgs84_p2, FROMhd72TOwgs84_p3);
         }
