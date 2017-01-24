@@ -14,15 +14,17 @@ namespace CoordTransform
 
         private List<double> FROMhd72TOwgs84_p3 = new List<double>() { 52.684, -71.194, -13.975, 0.3120, 0.1063, 0.3729, 0.0000010191 };
 
-        public void eovTOwgs84(decimal a, decimal b)
+        public List<double> eovTOwgs84(double a, double b)
         {
             List<double> hd72_a = new List<double>();
-            hd72_a = eovTOhd72(a, b);s
+            hd72_a = eovTOhd72(a, b);
 
             List<double> wgsCoord = bursa_wolf(hd72_a, FROMhd72TOwgs84_p2, FROMhd72TOwgs84_p3);
+
+            return wgsCoord;
         }
 
-        private List<double> eovTOhd72(decimal b, decimal a)
+        private List<double> eovTOhd72(double b, double a)
         {
 
             double x = 180 * 3600 / Math.PI;
@@ -32,13 +34,15 @@ namespace CoordTransform
             double f = 47.1;
             double g = f * Math.PI / 180;
             double h = 6379296.419;
-            double i = 47 + 7 / 60 + 20.0578 / 3600;
+            double i = 47 + (7.0 / 60.0) + (20.0578 / 3600.0);
             double j = i * Math.PI / 180;
-            double k = Convert.ToDouble(a - 200000);
-            double l = Convert.ToDouble(b - 650000);
-            double m = 2 * (Math.Atan(Math.Exp(k / h)) - Math.PI / 4);
+            double k = (a - 200000);
+            double l = (b - 650000);
+
+
+            double m = 2.0 * (Math.Atan(Math.Exp(k / h)) - Math.PI / 4.0);
             double n = l / h;
-            double o = 47 + 1 / 6;
+            double o = 47.0 + (1.0 / 6.0); 
             double p = Math.Asin(Math.Cos(g) * Math.Sin(m) + Math.Sin(g) * Math.Cos(m) * Math.Cos(n));
             double q = Math.Asin(Math.Sin(n) * Math.Cos(m) / Math.Cos(p));
             double r = 0.822824894115397;
@@ -46,12 +50,15 @@ namespace CoordTransform
             double t = o * Math.PI / 180;
             double u = 6378160;
             double v = 6356774.516;
+
             double w = (u * u - v * v) * Math.Cos(t) * Math.Cos(t) / v / v;
             double y = Math.Pow((1 + w), 0.5);
+
             double z = 1.5 * w * Math.Tan(t) / x;
             double aa = 0.5 * w * (-1 + Math.Tan(t) * Math.Tan(t) - w + 5 * w * Math.Tan(t) * Math.Tan(t)) / y / x / x;
             double ab = t + s * y / x - s * s * z / x + s * s * s * aa / x;
             double ac = e + q / c;
+
             double ad = ab * 180 / Math.PI;
             double ae = ac * 180 / Math.PI;
 
