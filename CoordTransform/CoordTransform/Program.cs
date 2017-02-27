@@ -18,7 +18,8 @@ namespace CoordTransform
 
 
             string geojson = string.Empty;
-            using (System.IO.StreamReader sr = new System.IO.StreamReader(@"C:\Users\peter.toth10\Source\Repos\Eov2Wgs84\CoordTransform\CoordTransform\Észak-Pest_10_Leges_helyi_szakasz_GPON.json"))
+            //using (System.IO.StreamReader sr = new System.IO.StreamReader(@"C:\Users\peter.toth10\Source\Repos\Eov2Wgs84\CoordTransform\CoordTransform\Észak-Buda_10_Leges_helyi_szakasz_HFC.json"))
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(@"d:\projects\Laca\JarasReRe\Egyben\Budakeszi\Budakeszi járás_01_Igenyhely_GPON.json"))
             {
 
                 geojson = sr.ReadToEnd();
