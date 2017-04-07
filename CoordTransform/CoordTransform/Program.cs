@@ -11,6 +11,15 @@ namespace CoordTransform
     {
         static void Main(string[] args)
         {
+            ConvertEOVFileInput FileInput = new ConvertEOVFileInput();
+            
+            List<string> result = FileInput.Conversion(@"d:\projects\Laca\SzaboI\PluszIgényhelyek\helyek2.csv");
+
+            System.IO.File.WriteAllLines(@"d:\projects\Laca\SzaboI\PluszIgényhelyek\helyekOut.csv", result);
+
+            // GEOJSON-ből
+
+            /*
             Projection conv = new Projection();
             //List<double> wgsCoords = new List<double>();
 
@@ -70,7 +79,7 @@ namespace CoordTransform
             ReCalculatedGeoJson.features = recalcFeatures.ToArray();
 
             string json = JsonConvert.SerializeObject(ReCalculatedGeoJson, Formatting.Indented);
-
+            */
 
         }
     }
