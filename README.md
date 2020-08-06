@@ -1,3 +1,3 @@
 # Eov2Wgs84
-Hungarian to EOV
-based on bajnok.xls
+Hungarian EOV to Wgs84
+based on bajnok.xls(ELTE)
